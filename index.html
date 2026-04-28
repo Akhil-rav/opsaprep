@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olympiad Problem Solving Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a0f1e;
+    --navy-mid: #111827;
+    --navy-light: #1a2540;
+    --gold: #c9a84c;
+    --gold-light: #e2c278;
+    --gold-pale: #f5e8c0;
+    --cream: #f7f3eb;
+    --muted: #8a95a8;
+    --border: rgba(201,168,76,0.2);
+    --border-subtle: rgba(255,255,255,0.06);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--cream);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(10,15,30,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.04em;
+    color: var(--gold-light);
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 400; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-circle {
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    border: 0.5px solid rgba(201,168,76,0.12);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .hero-circle:nth-child(3) { width: 500px; height: 500px; border-color: rgba(201,168,76,0.08); }
+  .hero-circle:nth-child(4) { width: 300px; height: 300px; border-color: rgba(201,168,76,0.06); }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  h1 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 5.2rem);
+    font-weight: 500; line-height: 1.12;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    max-width: 700px;
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
+  }
+
+  h1 em {
+    font-style: italic; color: var(--gold-light);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem; font-weight: 300;
+    color: var(--muted); max-width: 480px;
+    margin-bottom: 3rem;
+    opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+  }
+
+  .btn-group {
+    display: flex; gap: 1rem;
+    opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.85rem 2.2rem;
+    border: none; border-radius: 2px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    padding: 0.85rem 2.2rem;
+    border: 0.5px solid rgba(255,255,255,0.25); border-radius: 2px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem; font-weight: 400;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 6rem 4rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 0.5px;
+    background: var(--border); max-width: 80px;
+  }
+
+  h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500; color: var(--cream);
+    line-height: 1.2; margin-bottom: 1rem;
+  }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--navy-light);
+    border-top: 0.5px solid var(--border);
+    border-bottom: 0.5px solid var(--border);
+    padding: 2.5rem 4rem;
+  }
+  .stats-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+  .stat-item {
+    background: var(--navy-light);
+    padding: 2rem 1.5rem; text-align: center;
+  }
+  .stat-num {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.6rem; font-weight: 500;
+    color: var(--gold-light); line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-label {
+    font-size: 0.78rem; font-weight: 400;
+    color: var(--muted); letter-spacing: 0.06em;
+  }
+
+  /* ── ABOUT / INSTRUCTOR ── */
+  .about-section { background: var(--navy); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center;
+  }
+  .about-text p {
+    color: var(--muted); margin-bottom: 1.2rem;
+    font-size: 1rem; line-height: 1.8;
+  }
+  .about-text p strong { color: var(--cream); font-weight: 500; }
+
+  .credentials-list { list-style: none; margin-top: 2rem; }
+  .credentials-list li {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 0.5px solid var(--border-subtle);
+    font-size: 0.95rem;
+  }
+  .credentials-list li:first-child { border-top: 0.5px solid var(--border-subtle); }
+  .cred-icon {
+    width: 28px; height: 28px; flex-shrink: 0;
+    background: rgba(201,168,76,0.1);
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 2px;
+  }
+  .cred-icon svg { width: 13px; height: 13px; stroke: var(--gold); fill: none; stroke-width: 2; }
+  .cred-title { color: var(--cream); font-weight: 400; line-height: 1.4; }
+  .cred-sub { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+  .instructor-card {
+    background: var(--navy-light);
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .instructor-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .instructor-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 2rem; color: var(--cream); margin-bottom: 0.3rem;
+  }
+  .instructor-role {
+    font-size: 0.78rem; color: var(--gold); letter-spacing: 0.12em;
+    text-transform: uppercase; font-weight: 400; margin-bottom: 1.5rem;
+  }
+  .instructor-bio {
+    color: var(--muted); font-size: 0.95rem; line-height: 1.8;
+  }
+  .instructor-quote {
+    margin-top: 1.8rem; padding: 1.2rem 1.5rem;
+    border-left: 2px solid var(--gold);
+    font-family: 'EB Garamond', serif;
+    font-style: italic; font-size: 1.1rem; color: var(--cream);
+    line-height: 1.6;
+  }
+
+  /* ── PROGRAM ── */
+  .program-section { background: var(--navy-mid); }
+  .program-intro {
+    max-width: 600px; color: var(--muted); margin-bottom: 4rem; font-size: 1rem;
+  }
+
+  .levels-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; margin-bottom: 4rem;
+  }
+  .level-card {
+    background: var(--navy);
+    border: 0.5px solid var(--border-subtle);
+    border-radius: 2px; padding: 2rem;
+    transition: border-color 0.2s;
+  }
+  .level-card:hover { border-color: var(--border); }
+  .level-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+  .level-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.5rem; color: var(--cream); margin-bottom: 0.6rem;
+  }
+  .level-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .level-target {
+    margin-top: 1rem; font-size: 0.8rem;
+    color: var(--gold); font-weight: 400;
+  }
+
+  /* ── CURRICULUM ── */
+  .curriculum-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1px; background: var(--border-subtle);
+    border: 0.5px solid var(--border-subtle);
+  }
+  .week-card {
+    background: var(--navy-mid);
+    padding: 1.8rem;
+    transition: background 0.2s;
+  }
+  .week-card:hover { background: var(--navy-light); }
+  .week-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; color: var(--muted);
+    letter-spacing: 0.18em; margin-bottom: 0.6rem;
+  }
+  .week-title {
+    font-size: 1rem; font-weight: 500; color: var(--cream); margin-bottom: 0.6rem;
+  }
+  .week-topics { color: var(--muted); font-size: 0.85rem; line-height: 1.7; }
+
+  /* ── DETAILS ── */
+  .details-section { background: var(--navy); }
+  .details-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+  }
+  .detail-block {}
+  .detail-block-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2rem; color: var(--cream); margin-bottom: 1rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 0.5px solid var(--border-subtle);
+  }
+  .detail-list { list-style: none; }
+  .detail-list li {
+    color: var(--muted); font-size: 0.9rem; padding: 0.5rem 0;
+    display: flex; gap: 0.8rem; align-items: flex-start;
+  }
+  .detail-list li::before {
+    content: '→'; color: var(--gold); flex-shrink: 0; margin-top: 0.1rem;
+  }
+
+  /* ── REGISTER ── */
+  .register-section { background: var(--navy-light); text-align: center; }
+  .register-section .section-inner { max-width: 600px; }
+  .register-section h2 { margin-bottom: 1rem; }
+  .register-section p { color: var(--muted); margin-bottom: 2.5rem; font-size: 1rem; }
+
+  .register-form {
+    background: var(--navy);
+    border: 0.5px solid var(--border);
+    border-radius: 2px;
+    padding: 2.5rem; text-align: left;
+    display: flex; flex-direction: column; gap: 1.2rem;
+  }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+  .form-label {
+    font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--muted); font-weight: 400;
+  }
+  .form-input {
+    background: var(--navy-mid);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    border-radius: 2px; color: var(--cream);
+    padding: 0.75rem 1rem; font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem; font-weight: 300; outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus { border-color: var(--gold); }
+  .form-input::placeholder { color: rgba(138,149,168,0.5); }
+  select.form-input option { background: var(--navy-mid); }
+
+  .form-submit {
+    background: var(--gold); color: var(--navy);
+    border: none; border-radius: 2px; padding: 1rem;
+    font-family: 'Outfit', sans-serif; font-size: 0.88rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+
+  .register-note {
+    text-align: center; margin-top: 1.5rem;
+    font-size: 0.8rem; color: var(--muted);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-mid);
+    border-top: 0.5px solid var(--border-subtle);
+    padding: 2rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-name {
+    font-family: 'EB Garamond', serif; font-size: 1rem;
+    color: var(--gold-light);
+  }
+  .footer-copy { font-size: 0.78rem; color: var(--muted); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .stats-inner { grid-template-columns: 1fr 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .levels-grid { grid-template-columns: 1fr; }
+    .curriculum-grid { grid-template-columns: 1fr 1fr; }
+    .details-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">OPSA</div>
+  <ul class="nav-links">
+    <li><a href="#about">Instructor</a></li>
+    <li><a href="#program">Program</a></li>
+    <li><a href="#curriculum">Curriculum</a></li>
+    <li><a href="#register">Register</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-grid"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-circle"></div>
+  <div class="hero-circle"></div>
+
+  <div class="hero-eyebrow">Summer 2026 · AMC 10 / AMC 12 / Olympiad Prep</div>
+  <h1>Olympiad Problem<br><em>Solving</em><br>Academy</h1>
+  <p class="hero-sub">Structured, competition-grade math training taught by a USAJMO qualifier. A free, intensive AMC and Olympiad program.</p>
+  <div class="btn-group">
+    <a href="#register" class="btn-primary">Apply Now</a>
+    <a href="#program" class="btn-outline">View Program</a>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">USAJMO</div>
+      <div class="stat-label">National Qualifier</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">13</div>
+      <div class="stat-label">AIME Distinction Score</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">124.5</div>
+      <div class="stat-label">AMC 10 Peak Score</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Free — No Cost Ever</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-label">Your Instructor</div>
+        <h2>Akhil Ravuri</h2>
+        <p>A sophomore with one of the strongest competition math records in the region, Akhil has earned national recognition across AMC, AIME, and the USAJMO — one of the most prestigious high school math competitions in the country.</p>
+        <p>He has trained under an <strong>IMO bronze medalist</strong> and brings that rigorous, problem-first approach to every session. This isn't survey tutoring — it's competition preparation with a structured methodology.</p>
+
+        <ul class="credentials-list">
+          <li>
+            <div class="cred-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <div class="cred-title">USAJMO Qualifier</div>
+              <div class="cred-sub">USA Junior Mathematical Olympiad — top ~250 students nationally</div>
+            </div>
+          </li>
+          <li>
+            <div class="cred-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <div class="cred-title">AIME Distinction — Score 13</div>
+              <div class="cred-sub">American Invitational Mathematics Examination</div>
+            </div>
+          </li>
+          <li>
+            <div class="cred-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <div class="cred-title">AMC 10 Distinction — 121.5 & 124.5</div>
+              <div class="cred-sub">Two consecutive AMC 10 distinctions</div>
+            </div>
+          </li>
+          <li>
+            <div class="cred-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <div class="cred-title">Penn Math Contest — 1st Place Individual</div>
+              <div class="cred-sub">Perfect score, University of Pennsylvania invitational</div>
+            </div>
+          </li>
+          <li>
+            <div class="cred-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <div class="cred-title">Purple Comet Math Meet — Tied 1st (HS Division)</div>
+              <div class="cred-sub">Perfect score, national online competition</div>
+            </div>
+          </li>
+          <li>
+            <div class="cred-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div>
+              <div class="cred-title">Trained with an IMO Bronze Medalist</div>
+              <div class="cred-sub">International Mathematical Olympiad — highest level of competition math</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="reveal" style="transition-delay: 0.15s;">
+        <div class="instructor-card">
+          <div class="instructor-name">Akhil Ravuri</div>
+          <div class="instructor-role">Founder & Instructor · Class of 2028</div>
+          <div class="instructor-bio">
+            Competing at the national level since freshman year, Akhil brings firsthand knowledge of what it takes to move from AMC qualification to USAJMO distinction. He knows which techniques actually matter on contest day — and which ones don't.
+          </div>
+          <div class="instructor-quote">
+            "I learned competition math by doing thousands of problems under the guidance of elite mathematicians. This program distills that into a structured summer curriculum."
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="program-section" id="program">
+  <div class="section-inner">
+    <div class="section-label">Program Structure</div>
+    <h2>Two tracks. One standard.</h2>
+    <p class="program-intro">Whether you're aiming for your first AMC 10 distinction or pushing toward AIME and beyond, the program meets you where you are and pushes you further.</p>
+
+    <div class="levels-grid reveal">
+      <div class="level-card">
+        <div class="level-tag">Track A · Morning Sessions</div>
+        <div class="level-name">AMC 10/12 Foundations</div>
+        <div class="level-desc">Systematic coverage of all AMC 10 topic areas with an emphasis on speed, technique, and problem recognition. Designed to build the pattern library every top scorer relies on.</div>
+        <div class="level-target">Target: AMC 10 score 90 → 115+ &nbsp;·&nbsp; AM time slot</div>
+      </div>
+      <div class="level-card">
+        <div class="level-tag">Track B · Afternoon Sessions</div>
+        <div class="level-name">AMC 12 / AIME Bridge</div>
+        <div class="level-desc">Advanced material bridging AMC 12 and early AIME difficulty. Covers the deeper techniques — modular arithmetic, complex number geometry, generating functions intro, and proof-based reasoning.</div>
+        <div class="level-target">Target: AMC distinction → AIME qualification &nbsp;·&nbsp; PM time slot</div>
+      </div>
+    </div>
+
+    <div class="section-label" id="curriculum">Curriculum</div>
+    <h2 style="margin-bottom: 0.5rem;">Six weeks. Every major topic.</h2>
+
+    <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 3rem;">Each track runs its own independent six-week curriculum, calibrated to its level.</p>
+
+    <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+      <span style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">Track A — AMC 10/12 Foundations</span>
+      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">Morning sessions</span>
+    </div>
+    <div class="curriculum-grid reveal" style="margin-bottom: 3.5rem;">
+      <div class="week-card">
+        <div class="week-num">Week 01</div>
+        <div class="week-title">Algebra Fundamentals</div>
+        <div class="week-topics">Factoring, Vieta's formulas, quadratic techniques, systems of equations, algebraic manipulation under time pressure</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 02</div>
+        <div class="week-title">Number Theory</div>
+        <div class="week-topics">Divisibility rules, LCM/GCD, prime factorization, basic modular arithmetic, digit problems</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 03</div>
+        <div class="week-title">Combinatorics</div>
+        <div class="week-topics">Counting principles, permutations & combinations, stars & bars, basic inclusion-exclusion, Pigeonhole principle</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 04</div>
+        <div class="week-title">Geometry</div>
+        <div class="week-topics">Angle chasing, similar triangles, area methods, basic coordinate geometry, circle theorems</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 05</div>
+        <div class="week-title">Probability & Counting</div>
+        <div class="week-topics">Basic probability, expected value, geometric probability, complementary counting, casework strategies</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 06</div>
+        <div class="week-title">Mock Contests & Strategy</div>
+        <div class="week-topics">Full AMC 10 simulations, time management, problem triage, post-contest error analysis</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+      <span style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">Track B — AMC 12 / AIME Bridge</span>
+      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">Afternoon sessions</span>
+    </div>
+    <div class="curriculum-grid reveal">
+      <div class="week-card">
+        <div class="week-num">Week 01</div>
+        <div class="week-title">Advanced Algebra</div>
+        <div class="week-topics">AM-GM, Cauchy-Schwarz, polynomial roots & construction, functional equations, Vieta jumping</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 02</div>
+        <div class="week-title">Number Theory</div>
+        <div class="week-topics">Fermat's little theorem, Euler's totient, Chinese Remainder Theorem, lifting the exponent, quadratic residues, order of elements</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 03</div>
+        <div class="week-title">Advanced Combinatorics</div>
+        <div class="week-topics">Bijections, recursion & generating functions intro, inclusion-exclusion at depth, combinatorial identities, double counting</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 04</div>
+        <div class="week-title">Geometry</div>
+        <div class="week-topics">Power of a Point, radical axes, coordinate bash, trigonometric identities, Ptolemy's theorem, projective methods</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 05</div>
+        <div class="week-title">Probability & Combinatorics II</div>
+        <div class="week-topics">Advanced expected value, Markov chains intro, generating functions for probability, stars & bars extensions, complex counting arguments</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 06</div>
+        <div class="week-title">Mock Contests & Strategy</div>
+        <div class="week-topics">Full AMC 12 and AIME simulations, AIME-specific strategies, score optimization, targeted weakness review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="details-section">
+  <div class="section-inner">
+    <div class="section-label">Program Details</div>
+    <div class="details-grid reveal">
+      <div class="detail-block">
+        <div class="detail-block-title">Schedule</div>
+        <ul class="detail-list">
+          <li>6 weeks, Summer 2026</li>
+          <li>5 sessions per week — Monday through Friday</li>
+          <li>Track A: morning time slot (AM)</li>
+          <li>Track B: afternoon time slot (PM)</li>
+          <li>Online via Zoom · sessions recorded</li>
+        </ul>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-title">What's Included</div>
+        <ul class="detail-list">
+          <li>Live instruction every session</li>
+          <li>Custom problem sets per week</li>
+          <li>AMC-style homework assignments</li>
+          <li>Two full mock AMC contests</li>
+          <li>Individual score tracking & feedback</li>
+        </ul>
+      </div>
+      <div class="detail-block">
+        <div class="detail-block-title">Eligibility</div>
+        <ul class="detail-list">
+          <li>Rising 8th–11th graders</li>
+          <li>Track A: no prior AMC experience required</li>
+          <li>Track B: AMC score 75+ recommended</li>
+          <li>Completely free — no fees, no cost</li>
+          <li>Small cohort — limited spots available</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTER -->
+<section class="register-section" id="register">
+  <div class="section-inner">
+    <div class="section-label" style="justify-content: center;">Applications Open</div>
+    <h2>Register for OPSA Summer 2026</h2>
+    <p>This program is completely free. Spots are limited to keep sessions small and focused. Submit your interest below and Akhil will be in touch with track placement and exact timing.</p>
+
+    <div class="register-form reveal" style="text-align: center;">
+      <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.8;">Applications take about 2 minutes to complete. Akhil will follow up within 48 hours with confirmation and scheduling details. This program is 100% free.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdZL3T3NI-o1_ZPT5aBVw2lRyV3-iqA8m1XhQTlFSN4XG0now/viewform?usp=publish-editor" target="_blank" class="btn-primary" style="display: inline-block; font-size: 0.95rem; padding: 1.1rem 3rem;">Apply Now</a>
+      <p class="register-note" style="margin-top: 1.5rem;">No payment required — ever.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Olympiad Problem Solving Academy (OPSA)</div>
+  <div class="footer-copy">Founded by Akhil Ravuri · Summer 2026 · Free Program</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+
+  function handleSubmit(btn) {
+    btn.textContent = 'Application Received ✓';
+    btn.style.background = '#2d4a2d';
+    btn.style.color = '#a8d4a8';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
