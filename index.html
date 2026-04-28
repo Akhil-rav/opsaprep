@@ -269,7 +269,7 @@
   }
 
   .levels-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
     gap: 1.5rem; margin-bottom: 4rem;
   }
   .level-card {
@@ -444,9 +444,9 @@
   <div class="hero-circle"></div>
   <div class="hero-circle"></div>
 
-  <div class="hero-eyebrow">Summer 2026 · AMC 10 / AMC 12 / Olympiad Prep</div>
+  <div class="hero-eyebrow">Summer 2026 · AMC 8 / AMC 10 / AMC 12 / Olympiad Prep</div>
   <h1>Olympiad Problem<br><em>Solving</em><br>Academy</h1>
-  <p class="hero-sub">Structured, competition-grade math training taught by a USAJMO qualifier. A free, intensive AMC and Olympiad program.</p>
+  <p class="hero-sub">Structured, competition-grade math training taught by a USAJMO qualifier. Three tracks for grades 6–12, three days a week, completely free.</p>
   <div class="btn-group">
     <a href="#register" class="btn-primary">Apply Now</a>
     <a href="#program" class="btn-outline">View Program</a>
@@ -458,15 +458,15 @@
   <div class="stats-inner">
     <div class="stat-item">
       <div class="stat-num">USAJMO</div>
-      <div class="stat-label">National Qualifier</div>
+      <div class="stat-label">Instructor Qualification</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">13</div>
-      <div class="stat-label">AIME Distinction Score</div>
+      <div class="stat-num">6–12</div>
+      <div class="stat-label">Open to All Grades</div>
     </div>
     <div class="stat-item">
-      <div class="stat-num">124.5</div>
-      <div class="stat-label">AMC 10 Peak Score</div>
+      <div class="stat-num">2026</div>
+      <div class="stat-label">Summer Program</div>
     </div>
     <div class="stat-item">
       <div class="stat-num">100%</div>
@@ -551,32 +551,76 @@
 <section class="program-section" id="program">
   <div class="section-inner">
     <div class="section-label">Program Structure</div>
-    <h2>Two tracks. One standard.</h2>
-    <p class="program-intro">Whether you're aiming for your first AMC 10 distinction or pushing toward AIME and beyond, the program meets you where you are and pushes you further.</p>
+    <h2>Three tracks. One standard.</h2>
+    <p class="program-intro">From AMC 8 through AIME, the program meets students where they are — grades 6 through 12 — and builds toward the next level.</p>
 
     <div class="levels-grid reveal">
       <div class="level-card">
-        <div class="level-tag">Track A · Morning Sessions</div>
-        <div class="level-name">AMC 10/12 Foundations</div>
-        <div class="level-desc">Systematic coverage of all AMC 10 topic areas with an emphasis on speed, technique, and problem recognition. Designed to build the pattern library every top scorer relies on.</div>
-        <div class="level-target">Target: AMC 10 score 90 → 115+ &nbsp;·&nbsp; AM time slot</div>
+        <div class="level-tag">Track A · Morning (AM)</div>
+        <div class="level-name">AMC 8 Prep</div>
+        <div class="level-desc">Foundational competition math for middle schoolers. Covers all AMC 8 topic areas with emphasis on problem-solving instinct, arithmetic mastery, and contest strategy.</div>
+        <div class="level-target">For grades 6–8 · No prior experience required</div>
       </div>
       <div class="level-card">
-        <div class="level-tag">Track B · Afternoon Sessions</div>
-        <div class="level-name">AMC 12 / AIME Bridge</div>
-        <div class="level-desc">Advanced material bridging AMC 12 and early AIME difficulty. Covers the deeper techniques — modular arithmetic, complex number geometry, generating functions intro, and proof-based reasoning.</div>
-        <div class="level-target">Target: AMC distinction → AIME qualification &nbsp;·&nbsp; PM time slot</div>
+        <div class="level-tag">Track B · Afternoon</div>
+        <div class="level-name">AMC 10/12 Foundations</div>
+        <div class="level-desc">Systematic coverage of all AMC 10/12 topic areas with an emphasis on speed, technique, and problem recognition. Designed to build the pattern library every top scorer relies on.</div>
+        <div class="level-target">Target: AMC score 90 → 115+ · AMC score 75+ recommended</div>
+      </div>
+      <div class="level-card">
+        <div class="level-tag">Track C · Evening (PM)</div>
+        <div class="level-name">AMC 10/12 / AIME Bridge</div>
+        <div class="level-desc">Advanced material bridging AMC 10/12 and early AIME difficulty. Covers deeper techniques — modular arithmetic, complex number geometry, generating functions intro, and proof-based reasoning.</div>
+        <div class="level-target">Target: AMC distinction → AIME qualification</div>
       </div>
     </div>
 
     <div class="section-label" id="curriculum">Curriculum</div>
     <h2 style="margin-bottom: 0.5rem;">Six weeks. Every major topic.</h2>
-
     <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 3rem;">Each track runs its own independent six-week curriculum, calibrated to its level.</p>
 
+    <!-- Track A -->
     <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
-      <span style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">Track A — AMC 10/12 Foundations</span>
-      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">Morning sessions</span>
+      <span style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">Track A — AMC 8 Prep</span>
+      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">Morning sessions · Grades 6–8</span>
+    </div>
+    <div class="curriculum-grid reveal" style="margin-bottom: 3.5rem;">
+      <div class="week-card">
+        <div class="week-num">Week 01</div>
+        <div class="week-title">Arithmetic & Algebra</div>
+        <div class="week-topics">Fractions, ratios, percents, basic equations, word problems, order of operations, intro to variables</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 02</div>
+        <div class="week-title">Number Theory</div>
+        <div class="week-topics">Divisibility, factors & multiples, LCM/GCD, prime factorization, basic modular arithmetic, digit problems</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 03</div>
+        <div class="week-title">Counting & Probability</div>
+        <div class="week-topics">Counting principles, permutations & combinations, basic probability, complementary counting, organized listing</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 04</div>
+        <div class="week-title">Geometry</div>
+        <div class="week-topics">Area & perimeter, angle relationships, similar figures, Pythagorean theorem, basic coordinate geometry</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 05</div>
+        <div class="week-title">Mixed Problem Solving</div>
+        <div class="week-topics">Multi-step problems, logic puzzles, pattern recognition, casework, building contest intuition across all topics</div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 06</div>
+        <div class="week-title">Mock Contests & Strategy</div>
+        <div class="week-topics">Full AMC 8 simulations, pacing strategy, guessing strategy, post-contest review and targeted practice</div>
+      </div>
+    </div>
+
+    <!-- Track B -->
+    <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+      <span style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">Track B — AMC 10/12 Foundations</span>
+      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">Afternoon sessions</span>
     </div>
     <div class="curriculum-grid reveal" style="margin-bottom: 3.5rem;">
       <div class="week-card">
@@ -607,13 +651,14 @@
       <div class="week-card">
         <div class="week-num">Week 06</div>
         <div class="week-title">Mock Contests & Strategy</div>
-        <div class="week-topics">Full AMC 10 simulations, time management, problem triage, post-contest error analysis</div>
+        <div class="week-topics">Full AMC 10/12 simulations, time management, problem triage, post-contest error analysis</div>
       </div>
     </div>
 
+    <!-- Track C -->
     <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
-      <span style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">Track B — AMC 12 / AIME Bridge</span>
-      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">Afternoon sessions</span>
+      <span style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">Track C — AMC 10/12 / AIME Bridge</span>
+      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">Evening sessions</span>
     </div>
     <div class="curriculum-grid reveal">
       <div class="week-card">
@@ -644,7 +689,7 @@
       <div class="week-card">
         <div class="week-num">Week 06</div>
         <div class="week-title">Mock Contests & Strategy</div>
-        <div class="week-topics">Full AMC 12 and AIME simulations, AIME-specific strategies, score optimization, targeted weakness review</div>
+        <div class="week-topics">Full AMC 10/12 and AIME simulations, AIME-specific strategies, score optimization, targeted weakness review</div>
       </div>
     </div>
   </div>
@@ -659,9 +704,10 @@
         <div class="detail-block-title">Schedule</div>
         <ul class="detail-list">
           <li>6 weeks, Summer 2026</li>
-          <li>5 sessions per week — Monday through Friday</li>
-          <li>Track A: morning time slot (AM)</li>
-          <li>Track B: afternoon time slot (PM)</li>
+          <li>3 sessions per week — Mon, Wed, Fri</li>
+          <li>Track A: morning (AM) — AMC 8</li>
+          <li>Track B: afternoon — AMC 10/12 Foundations</li>
+          <li>Track C: evening (PM) — AMC 10/12 / AIME Bridge</li>
           <li>Online via Zoom · sessions recorded</li>
         </ul>
       </div>
@@ -678,9 +724,9 @@
       <div class="detail-block">
         <div class="detail-block-title">Eligibility</div>
         <ul class="detail-list">
-          <li>Rising 8th–11th graders</li>
-          <li>Track A: no prior AMC experience required</li>
-          <li>Track B: AMC score 75+ recommended</li>
+          <li>Track A: grades 6–8, no experience required</li>
+          <li>Track B: grades 8–12, AMC score 75+ recommended</li>
+          <li>Track C: grades 9–12, AMC distinction recommended</li>
           <li>Completely free — no fees, no cost</li>
           <li>Small cohort — limited spots available</li>
         </ul>
