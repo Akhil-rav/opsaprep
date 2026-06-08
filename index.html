@@ -10,15 +10,15 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --navy: #0a0f1e;
-    --navy-mid: #111827;
-    --navy-light: #1a2540;
-    --gold: #c9a84c;
-    --gold-light: #e2c278;
-    --gold-pale: #f5e8c0;
-    --cream: #f7f3eb;
-    --muted: #8a95a8;
-    --border: rgba(201,168,76,0.2);
+    --navy: #120808;
+    --navy-mid: #1e0f0f;
+    --navy-light: #2e1515;
+    --gold: #c4443c;
+    --gold-light: #e07a5f;
+    --gold-pale: #f5c4b3;
+    --cream: #f5f0e8;
+    --muted: #9a7a78;
+    --border: rgba(196,68,60,0.25);
     --border-subtle: rgba(255,255,255,0.06);
   }
 
@@ -38,7 +38,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 1.2rem 4rem;
-    background: rgba(10,15,30,0.85);
+    background: rgba(18,8,8,0.88);
     backdrop-filter: blur(12px);
     border-bottom: 0.5px solid var(--border);
   }
@@ -69,8 +69,8 @@
   .hero-grid {
     position: absolute; inset: 0;
     background-image:
-      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+      linear-gradient(rgba(196,68,60,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(196,68,60,0.06) 1px, transparent 1px);
     background-size: 60px 60px;
     mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
   }
@@ -79,12 +79,12 @@
     position: absolute;
     width: 700px; height: 700px;
     border-radius: 50%;
-    border: 0.5px solid rgba(201,168,76,0.12);
+    border: 0.5px solid rgba(196,68,60,0.15);
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
   }
-  .hero-circle:nth-child(3) { width: 500px; height: 500px; border-color: rgba(201,168,76,0.08); }
-  .hero-circle:nth-child(4) { width: 300px; height: 300px; border-color: rgba(201,168,76,0.06); }
+  .hero-circle:nth-child(3) { width: 500px; height: 500px; border-color: rgba(196,68,60,0.10); }
+  .hero-circle:nth-child(4) { width: 300px; height: 300px; border-color: rgba(196,68,60,0.07); }
 
   .hero-eyebrow {
     font-family: 'DM Mono', monospace;
@@ -220,7 +220,7 @@
   .credentials-list li:first-child { border-top: 0.5px solid var(--border-subtle); }
   .cred-icon {
     width: 28px; height: 28px; flex-shrink: 0;
-    background: rgba(201,168,76,0.1);
+    background: rgba(196,68,60,0.12);
     border: 0.5px solid var(--border);
     border-radius: 2px;
     display: flex; align-items: center; justify-content: center;
@@ -446,7 +446,7 @@
 
   <div class="hero-eyebrow">Summer 2026 · AMC 8 / AMC 10 / AMC 12 / Olympiad Prep</div>
   <h1>Olympiad Problem<br><em>Solving</em><br>Academy</h1>
-  <p class="hero-sub">Structured, competition-grade math training taught by a USAJMO qualifier. Three tracks for grades 6–12, three days a week, completely free.</p>
+  <p class="hero-sub">Structured, competition-grade math training taught by a USAJMO qualifier. Three tracks for grades 6–12, two days a week, completely free.</p>
   <div class="btn-group">
     <a href="#register" class="btn-primary">Apply Now</a>
     <a href="#program" class="btn-outline">View Program</a>
@@ -556,22 +556,22 @@
 
     <div class="levels-grid reveal">
       <div class="level-card">
-        <div class="level-tag">Track A · Morning (AM)</div>
+        <div class="level-tag">Track A · 8:15–9:30 AM</div>
         <div class="level-name">AMC 8 Prep</div>
         <div class="level-desc">Foundational competition math for middle schoolers. Covers all AMC 8 topic areas with emphasis on problem-solving instinct, arithmetic mastery, and contest strategy.</div>
-        <div class="level-target">For grades 6–8 · No prior experience required</div>
+        <div class="level-target">For grades 6–8 · No prior experience required · 8:15–9:30 AM</div>
       </div>
       <div class="level-card">
-        <div class="level-tag">Track B · Afternoon</div>
+        <div class="level-tag">Track B · 10:00–11:15 AM</div>
         <div class="level-name">AMC 10/12 Foundations</div>
         <div class="level-desc">Systematic coverage of all AMC 10/12 topic areas with an emphasis on speed, technique, and problem recognition. Designed to build the pattern library every top scorer relies on.</div>
-        <div class="level-target">Target: AMC score 60 → 90+ · No prior experience required</div>
+        <div class="level-target">Target: AMC score 60 → 90+ · No prior experience required · 10:00–11:15 AM</div>
       </div>
       <div class="level-card">
-        <div class="level-tag">Track C · Evening (PM)</div>
+        <div class="level-tag">Track C · 12:00–1:15 PM</div>
         <div class="level-name">AMC 10/12 / AIME Bridge</div>
         <div class="level-desc">Advanced material bridging AMC 10/12 and early AIME difficulty. Covers deeper techniques — modular arithmetic, complex number geometry, generating functions intro, and proof-based reasoning.</div>
-        <div class="level-target">Target: AMC distinction → AIME qualification</div>
+        <div class="level-target">Target: AMC distinction → AIME qualification · AMC 60+ recommended · 12:00–1:15 PM</div>
       </div>
     </div>
 
@@ -582,7 +582,7 @@
     <!-- Track A -->
     <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
       <span style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">Track A — AMC 8 Prep</span>
-      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">Morning sessions · Grades 6–8</span>
+      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">8:15–9:30 AM · Grades 6–8</span>
     </div>
     <div class="curriculum-grid reveal" style="margin-bottom: 3.5rem;">
       <div class="week-card">
@@ -620,7 +620,7 @@
     <!-- Track B -->
     <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
       <span style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">Track B — AMC 10/12 Foundations</span>
-      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">Afternoon sessions</span>
+      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">10:00–11:15 AM</span>
     </div>
     <div class="curriculum-grid reveal" style="margin-bottom: 3.5rem;">
       <div class="week-card">
@@ -658,7 +658,7 @@
     <!-- Track C -->
     <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
       <span style="font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold);">Track C — AMC 10/12 / AIME Bridge</span>
-      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">Evening sessions</span>
+      <span style="font-size: 0.75rem; color: var(--muted); font-style: italic;">12:00–1:15 PM</span>
     </div>
     <div class="curriculum-grid reveal">
       <div class="week-card">
@@ -703,11 +703,12 @@
       <div class="detail-block">
         <div class="detail-block-title">Schedule</div>
         <ul class="detail-list">
-          <li>6 weeks, Summer 2026</li>
-          <li>3 sessions per week — Mon, Wed, Fri</li>
-          <li>Track A: morning (AM) — AMC 8</li>
-          <li>Track B: afternoon — AMC 10/12 Foundations</li>
-          <li>Track C: evening (PM) — AMC 10/12 / AIME Bridge</li>
+          <li>6 weeks · 2 sessions/week · 75 min each</li>
+          <li>Jul 6, 9 · Jul 13, 16 · Jul 20, 23</li>
+          <li>Jul 27, 30 · Aug 3, 6 · Aug 10, 13</li>
+          <li>Track A: 8:15–9:30 AM</li>
+          <li>Track B: 10:00–11:15 AM</li>
+          <li>Track C: 12:00–1:15 PM</li>
           <li>Online via Zoom · sessions recorded</li>
         </ul>
       </div>
@@ -725,8 +726,8 @@
         <div class="detail-block-title">Eligibility</div>
         <ul class="detail-list">
           <li>Track A: grades 6–8, no experience required</li>
-          <li>Track B: grades 8–12, AMC score 75+ recommended</li>
-          <li>Track C: grades 9–12, AMC distinction recommended</li>
+          <li>Track B: grades 8–12, no experience required</li>
+          <li>Track C: grades 9–12, AMC score 60+ recommended</li>
           <li>Completely free — no fees, no cost</li>
           <li>Small cohort — limited spots available</li>
         </ul>
